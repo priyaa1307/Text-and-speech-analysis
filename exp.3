@@ -1,0 +1,23 @@
+import nltk
+nltk.download('gutenberg')
+nltk.download('brown')
+nltk.download('book')
+from nltk.corpus import gutenberg, brown
+from nltk.book import text1, text2 
+print("Gutenberg file IDs:")
+print(gutenberg.fileids())  # list texts
+print("\nFirst 500 chars of 'austen-emma.txt':")
+emma_text = gutenberg.raw('austen-emma.txt')
+print(emma_text[:500])
+print("\nFirst 20 words from 'austen-emma.txt':")
+print(gutenberg.words('austen-emma.txt')[:20])
+print("\nFirst sentence from 'austen-emma.txt':")
+print(gutenberg.sents('austen-emma.txt')[0])
+print("\nBrown corpus categories:")
+print(brown.categories())
+print("\nFirst 20 words in the 'news' category of Brown corpus:")
+print(brown.words(categories='news')[:20])
+print("\nConcordance for 'whale' in Moby Dick (text1):")
+text1.concordance("whale")
+print("\nCommon vocabulary in Sense and Sensibility (text2):")
+print(set(text2[:100]) & set(text1[:100]))  
